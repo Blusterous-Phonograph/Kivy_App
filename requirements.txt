@@ -1,0 +1,4 @@
+Flask==2.2.5
+requests==2.28.2
+kivy==2.2.0
+python==3.12.9
