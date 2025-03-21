@@ -5,13 +5,14 @@ app = Flask(__name__)
 
 @app.route('/upload_text', methods=['POST'])
 def upload_text():
-    text = request.form.get('text')
-    tags = request.form.get('tags')
+    prompt = request.form.get('prompt')
+    style = request.form.get('style')
     title = request.form.get('title')
-    if text and tags and title:
-        print("收到文本:", text)
+    if prompt and style and title:
+        print("收到文本:", prompt, style, title)
         # 调用 Suno.generate 生成音乐文件链接
-        music_url_0, music_url_1 = Suno.generate(text, tags, title)
+        music_url_0, music_url_1 = Suno.generate(prompt, style, title)
+        print("音乐链接:", music_url_0, music_url_1)
         if music_url_0 and music_url_1:
             return jsonify({
                 "status": "success",
